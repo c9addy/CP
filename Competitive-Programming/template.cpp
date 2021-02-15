@@ -3,14 +3,16 @@
 using namespace std ;
 typedef long long  ll;
 typedef vector<int> vi;
+typedef vector<ll> vil;
 typedef pair<int,int> pi;
 #define F first
 #define S second
 #define PB push_back
 #define MP make_pair
-#define FOR(i,a,b) for (int i = a; i <= b; i++)
+#define FOR(i,a,b) for (int i = a; i < b; i++)
 #define SORT(v) sort(v.begin(), v.end())
 #define RSORT(v) sort(v.rbegin(),v.rend())
+#define PRINT(x) cout<<x<<"\n";
 // #define ar array;
 // ======================================REFERENCE======================================
 
@@ -55,40 +57,31 @@ typedef pair<int,int> pi;
 
 
 
-
-// Prime Numbers Array
-// bool prime[100000];
-// void SieveOfEratosthenes(int n)
+// const int mxn = 1e6;
+// vector<int> primenum;
+// void primes()
 // {
-//     memset(prime, true, sizeof(prime));
-//     for (int p = 2; p * p <= n; p++)
-//     {
-//         if (prime[p] == true) 
-//         {
-//             for (int i = p * p; i <= n; i += p)
-//                 prime[i] = false;
-//         }
-//     }
-//     prime[0]=false;
-//     prime[1]=false;
-
+//     bool prime[mxn];
+//     memset(prime, false, sizeof(prime));
+//     for (int i = 3; i < sqrt(mxn) + 1; i += 2)
+//         if (not prime[i])
+//             for (int j = i * i; j < mxn; j += i)
+//                 prime[j] = true;
+//     primenum.push_back(2);
+//     for (int i = 3; i < mxn; i += 2)
+//         if (not prime[i])
+//             primenum.push_back(i);
 // }
-
 //string ans = (sum ==m  ? "YES" : "NO");//reference
 
 
 inline void solve() {
-ll t;cin>>t;
-while(t--){
 
-}
 }
 
 int main(){
 ios_base::sync_with_stdio(0);
 cin.tie(0);
-
-
 solve();
 }
 

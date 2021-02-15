@@ -22,7 +22,13 @@
         "filesystem": "cpp",
         "iterator": "cpp",
         "map": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "utility": "cpp",
+        "iosfwd": "cpp",
+        "bitset": "cpp",
+        "memory": "cpp",
+        "algorithm": "cpp",
+        "random": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

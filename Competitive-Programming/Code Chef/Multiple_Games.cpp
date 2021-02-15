@@ -12,7 +12,7 @@ typedef pair<int,int> pi;
 #define FOR(i,a,b) for (int i = a; i < b; i++)
 #define SORT(v) sort(v.begin(), v.end())
 #define RSORT(v) sort(v.rbegin(),v.rend())
-#define PRINT(x) cout<<x<<endl;
+#define PRINT(x) cout<<x<<"\n";
 // #define ar array;
 // ======================================REFERENCE======================================
 
@@ -57,30 +57,71 @@ typedef pair<int,int> pi;
 
 
 
-
-// Prime Numbers Array
-// bool prime[100000];
-// void SieveOfEratosthenes(int n)
+// const int mxn = 1e6;
+// vector<int> primenum;
+// void primes()
 // {
-//     memset(prime, true, sizeof(prime));
-//     for (int p = 2; p * p <= n; p++)
-//     {
-//         if (prime[p] == true) 
-//         {
-//             for (int i = p * p; i <= n; i += p)
-//                 prime[i] = false;
-//         }
-//     }
-//     prime[0]=false;
-//     prime[1]=false;
-
+//     bool prime[mxn];
+//     memset(prime, false, sizeof(prime));
+//     for (int i = 3; i < sqrt(mxn) + 1; i += 2)
+//         if (not prime[i])
+//             for (int j = i * i; j < mxn; j += i)
+//                 prime[j] = true;
+//     primenum.push_back(2);
+//     for (int i = 3; i < mxn; i += 2)
+//         if (not prime[i])
+//             primenum.push_back(i);
 // }
-
 //string ans = (sum ==m  ? "YES" : "NO");//reference
 
 
 inline void solve() {
-
+int t=1;cin>>t;
+while(t--){
+    int n,q,m;cin>>n>>q>>m;
+    int a[n];
+    FOR(i,0,n){
+        cin>>a[i];
+    }
+    int b[1000001]={};
+    map<pair<int ,int>,int> mpp;
+    while(q--){
+        int l,r;cin>>l>>r;
+        l--,r--;
+        if(a[l]>m){
+            continue;
+        }
+        else if(a[l]<=m && a[r]>m){
+            b[a[l]]++;
+            b[m+1]--;
+        }
+        else{
+            b[a[l]]++;
+            b[m+1]--;
+            mpp[{a[l],a[r]}]++;
+        }
+    }
+    for(auto x:mpp){
+        int ai=x.first.first;
+        int bi=x.first.second;
+        int l=x.second;
+        b[bi+ai]-=l;
+        b[bi+2*ai]+=l;
+        int c=bi+2*ai;
+        while(c+bi<=m){
+            c+=bi;
+            b[c]-=l;
+            b[c+ai]+=l;
+            c+=ai;
+        }
+    }
+    int mx=0;
+    FOR(i,1,m+1){
+        b[i]+=b[i-1];
+        mx=max(mx,b[i]);
+    }
+    PRINT(mx);
+}
 }
 
 int main(){

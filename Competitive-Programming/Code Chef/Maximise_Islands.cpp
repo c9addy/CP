@@ -80,7 +80,54 @@ typedef pair<int,int> pi;
 
 
 inline void solve() {
-
+int t;cin>>t;
+while(t--){
+    int m,n;cin>>n>>m;
+    int ans=0;
+    for(int i=0;i<n;i++){
+        string s="";
+        cin>>s;
+        if((n*m)%2!=0){
+            for(int j=0;j<m;j++){
+                if((i+j)%2==0){
+                    if(s[j]=='.'){
+                        ans++;
+                    }
+                }
+                else{
+                    if(s[j]=='*'){
+                        ans++;
+                    }
+                }
+                }
+        }
+        else{
+            
+            int c1=0,c2=0;
+            for(int j=0;j<m;j++){
+                if((i+j)%2==0){
+                    if(s[j]=='.'){
+                        c1++;
+                    }
+                    else{
+                        c2++;
+                    }
+                }
+                else{
+                    if(s[j]=='*'){
+                        c1++;
+                    }
+                    else{
+                        c2++;
+                    }
+                }
+                }
+                ans+=min(c1,c2);
+        }
+        
+    }
+    PRINT(ans);
+}
 }
 
 int main(){
@@ -89,3 +136,14 @@ cin.tie(0);
 solve();
 }
 
+
+// 2
+// 2 2
+// ..
+// *.
+// 2 4
+// *..*
+// *.*.
+
+// 1
+// 2

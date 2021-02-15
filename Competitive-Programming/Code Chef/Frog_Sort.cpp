@@ -57,30 +57,41 @@ typedef pair<int,int> pi;
 
 
 
-
-// Prime Numbers Array
-// bool prime[100000];
-// void SieveOfEratosthenes(int n)
-// {
-//     memset(prime, true, sizeof(prime));
-//     for (int p = 2; p * p <= n; p++)
-//     {
-//         if (prime[p] == true) 
-//         {
-//             for (int i = p * p; i <= n; i += p)
-//                 prime[i] = false;
-//         }
+// const int mxN=1e6+5;
+// // Prime Numbers Array
+// bool prime[mxN];
+//  void primes(){
+//     for(int i=0;i<mxN;i++){
+//         prime[i]=true;
 //     }
 //     prime[0]=false;
 //     prime[1]=false;
-
-// }
+//     for(int p=2;p*p<mxN;p++){
+//         if(prime[p]){
+//         for(int i=p*p;i<mxN;i+=p){
+//             prime[i]=false;
+//         }
+//         }
+//     }
+//   }
 
 //string ans = (sum ==m  ? "YES" : "NO");//reference
 
 
 inline void solve() {
-
+int t;cin>>t;
+while(t--){
+    int n;cin>>n;
+    vi weight(n);
+    vi jump(n);
+    FOR(i,0,n){
+        cin>>weight[i];
+    }
+    FOR(i,0,n){
+        cin>>jump[i];
+    }
+    
+}
 }
 
 int main(){

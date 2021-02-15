@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include <unordered_map>
 #include <iostream>
 using namespace std ;
 typedef long long  ll;
@@ -12,7 +13,7 @@ typedef pair<int,int> pi;
 #define FOR(i,a,b) for (int i = a; i < b; i++)
 #define SORT(v) sort(v.begin(), v.end())
 #define RSORT(v) sort(v.rbegin(),v.rend())
-#define PRINT(x) cout<<x<<endl;
+#define PRINT(x) cout<<x<<"\n";
 // #define ar array;
 // ======================================REFERENCE======================================
 
@@ -57,30 +58,58 @@ typedef pair<int,int> pi;
 
 
 
-
-// Prime Numbers Array
-// bool prime[100000];
-// void SieveOfEratosthenes(int n)
+// const int mxn = 1e6;
+// vector<int> primenum;
+// void primes()
 // {
-//     memset(prime, true, sizeof(prime));
-//     for (int p = 2; p * p <= n; p++)
-//     {
-//         if (prime[p] == true) 
-//         {
-//             for (int i = p * p; i <= n; i += p)
-//                 prime[i] = false;
-//         }
-//     }
-//     prime[0]=false;
-//     prime[1]=false;
-
+//     bool prime[mxn];
+//     memset(prime, false, sizeof(prime));
+//     for (int i = 3; i < sqrt(mxn) + 1; i += 2)
+//         if (not prime[i])
+//             for (int j = i * i; j < mxn; j += i)
+//                 prime[j] = true;
+//     primenum.push_back(2);
+//     for (int i = 3; i < mxn; i += 2)
+//         if (not prime[i])
+//             primenum.push_back(i);
 // }
-
 //string ans = (sum ==m  ? "YES" : "NO");//reference
 
-
+inline int check(unordered_map<int, vector<int> > dict, int v,int w){
+    if(dict[v].size()==0){
+        return 0;
+    }
+    if(w%dict[v].size()==0){
+        int temp2=0;
+        int new_w=w/dict[v].size();
+        FOR(i,0,dict[v].size()){
+            temp2+=check(dict,dict[v][i],new_w);
+        }
+        return temp2;
+    }
+    else{
+        return w;
+    }
+}
 inline void solve() {
+int n;
+unordered_map<int, vector<int> > dict;
+cin>>n;
+FOR(i,0,n){
+    vector<int> temp;
+    dict.insert(make_pair(i+1,temp));
+}
+FOR(i,2,n+1){
+    int t;cin>>t;
+    dict[t].push_back(i);
+}
+int q,v,w;cin>>q;
 
+FOR(i,0,q) {
+    cin>>v>>w;
+    int ans=check(dict,v,w);
+    PRINT(ans);
+}
 }
 
 int main(){

@@ -12,7 +12,7 @@ typedef pair<int,int> pi;
 #define FOR(i,a,b) for (int i = a; i < b; i++)
 #define SORT(v) sort(v.begin(), v.end())
 #define RSORT(v) sort(v.rbegin(),v.rend())
-#define PRINT(x) cout<<x<<endl;
+#define PRINT(x) cout<<x<<endl
 // #define ar array;
 // ======================================REFERENCE======================================
 
@@ -57,30 +57,44 @@ typedef pair<int,int> pi;
 
 
 
-
-// Prime Numbers Array
-// bool prime[100000];
-// void SieveOfEratosthenes(int n)
-// {
-//     memset(prime, true, sizeof(prime));
-//     for (int p = 2; p * p <= n; p++)
-//     {
-//         if (prime[p] == true) 
-//         {
-//             for (int i = p * p; i <= n; i += p)
-//                 prime[i] = false;
-//         }
+// const int mxN=1e6+5;
+// // Prime Numbers Array
+// bool prime[mxN];
+//  void primes(){
+//     for(int i=0;i<mxN;i++){
+//         prime[i]=true;
 //     }
 //     prime[0]=false;
 //     prime[1]=false;
-
-// }
+//     for(int p=2;p*p<mxN;p++){
+//         if(prime[p]){
+//         for(int i=p*p;i<mxN;i+=p){
+//             prime[i]=false;
+//         }
+//         }
+//     }
+//   }
 
 //string ans = (sum ==m  ? "YES" : "NO");//reference
 
 
 inline void solve() {
-
+int t;cin>>t;
+while(t--){
+    int n;cin>>n;
+    int s1=0,p1=0;
+    string s,p;
+    cin>>s>>p;
+    int sum = 0;
+    bool good = true;
+    for(int i = 0; i< n; i++){
+        if(s[i] == '1')sum++;
+        if(p[i] == '1')sum--;
+        good &= sum >= 0;
+    }
+    good &= sum == 0;
+    cout << (good? "Yes" : "No") << '\n';
+}
 }
 
 int main(){
